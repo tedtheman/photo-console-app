@@ -2,16 +2,17 @@
 
 A python implementation of the Photo Console Application project.
 
-## Introduction
+## Overview
 
 The application is written in Python 3.  
 It has a rich set of options for choosing one or more albums, row filtering and output formatting.
 
 The code was rigoriously tested and analyzed.
 
-* 100% test coverage.
-* Mocking employed to ensure all code paths are tested.
+* 100% test coverage, of both application and test code.
+* Mocking is employed to achieve execution of all code paths.
 * Lint is used to ensure best practices for structure and style.
+* The suggested pytest options produces a nice html formatted report under accessible at htmlcov/index.html.  The initial page provides a summary with file links to drill down.
 
 ## Getting Started
 
