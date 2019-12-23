@@ -6,7 +6,7 @@ A python implementation of the Photo Console Application project.
 
 The application is written in Python version 3 and is deployed with pipenv, which combines package management and virtual environments.  It has a rich set of options for choosing one or more albums, interative mode, row filtering and output formatting.  
 
-The code was rigoriously tested using pytest and analyzed with pylint.
+The code was rigoriously analyzed and tested using pylint and pytest, respectively.
 
 * 100% test coverage.
 * Mocking is utilized to cover all code paths.
@@ -47,11 +47,11 @@ Install the following if not already:
 3. pipenv shell    # this activates the virtual environment
 4. pipenv install  # this installs the dependencies
 
-## Running the tests
+## Running the tests - with coverage collection and reporting
 
 * pytest -v --cov --cov-report=html
 
-## Running Lint - on application and test code
+## Running lint - on both application and test code
 
 * python -m pylint photos.py
 * python -m pylint test_photos.py
