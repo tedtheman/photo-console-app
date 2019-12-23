@@ -1,0 +1,26 @@
+usage: pytest [-h] [-d] [-i] [-g GREP] [-n NUMBER] [-p] [-r] [-t TIMEOUT]
+              [albums [albums ...]]
+
+Display photo ids and titles for given album id(s).
+Provide album ids via command line and/or interactive prompts.
+To exit interactive mode enter 0, 'q' or hit return twice in succession.
+
+positional arguments:
+  albums                optional album id(s) ...
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d, --debug           print debug info.
+  -i, --interactive     prompt for album id(s).
+  -g GREP, --grep GREP  regex pattern for matching titles
+  -n NUMBER, --number NUMBER
+                        max number of photos to show (default all).
+  -p, --pretty          use PrettyTable for showing album info.
+  -r, --rows            include row counts in output.
+  -t TIMEOUT, --timeout TIMEOUT
+                        timeout in seconds for photo album url.
+
+Examples:
+photos 3 -i      # begin with album 3 and prompt for more
+photos 1 99 -r   # print albums 1 and 99 with row numbers
+photos -p -r 3   # output prettyprint table with row numbers.
