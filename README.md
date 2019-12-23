@@ -68,3 +68,12 @@ Install the following if not already:
 * python photos.py 3 -n 10 --pretty
 * python photos.py 4 5 6 --pretty --rows --grep qui
 * python photos.py 7 -i
+
+## 'pipenv run' alternative to 'pipenv shell'
+
+Instead of entering shell mode, commands can be run via 'pipenv run <command ...>'.  One downside of using shell mode is that up/down arrow keys do not display command history as command shells typically do.
+
+Examples using run:
+
+* pipenv run python photos.py ...
+* pipenv run pytest -v --cov --cov-report=html
