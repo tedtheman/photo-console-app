@@ -18,7 +18,7 @@ The code was rigoriously analyzed and tested using pylint and pytest, respective
 Install the following if not already:
 
 * git from [git-scm.com] (https://git-scm.com)
-* Python 3 if you don't already have it from [python.org/downloads] (https://python.org/downloads).
+* Python 3 from [python.org/downloads] (https://python.org/downloads).
 * pipenv using pip, which comes with Python.
 
 ## Prerequistes
