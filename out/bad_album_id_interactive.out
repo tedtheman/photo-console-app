@@ -1,4 +1,4 @@
 Enter album_id: 
 Enter album_id: 
-albumId must be numeric
+invalid albumId, should be 1-100, see -h/--help
 Enter album_id: exiting ...

@@ -5,6 +5,7 @@ pytest cases for photos.py
 """
 
 import builtins
+import re
 import photos
 
 INPUT_RESPONSE = []  # for monkeypatching with send_input() and patch_input()
@@ -13,6 +14,11 @@ INPUT_RESPONSE = []  # for monkeypatching with send_input() and patch_input()
 def arg_list(arg_str):
     """arg list builder from given string"""
     return list(arg_str.split(' '))
+
+
+def compare(a, b):
+    """ Compare two base strings, disregarding whitespace """
+    return re.sub(r"\s*", "", a) == re.sub(r"\s*", "", b)
 
 
 def verify(capsys, test_case):
@@ -26,7 +32,8 @@ def verify(capsys, test_case):
     in_path = f"ctl/{test_case}.out"
     with open(in_path, mode='r') as file_in:
         ctl = file_in.read()
-    assert std_out == ctl
+
+    assert compare(std_out, ctl) is True
 
 
 def send_input(value, **kwargs):  # pylint: disable=unused-argument
@@ -34,7 +41,10 @@ def send_input(value, **kwargs):  # pylint: disable=unused-argument
     global INPUT_RESPONSE  # pylint: disable=global-statement
     print(value, end='')
     if isinstance(INPUT_RESPONSE, list):
-        retval = INPUT_RESPONSE[0]
+        if len(INPUT_RESPONSE):
+            retval = INPUT_RESPONSE[0]
+        else:
+            retval = ''
         INPUT_RESPONSE = INPUT_RESPONSE[1:]  # pop stack
         if len(INPUT_RESPONSE) >= 1:
             print()
@@ -43,11 +53,18 @@ def send_input(value, **kwargs):  # pylint: disable=unused-argument
     return retval
 
 
-def patch_input(monkeypatch, response=''):
+def set_input(response):
+    """"Mock set input value"""
+    global INPUT_RESPONSE  # pylint: disable=global-statement
+    INPUT_RESPONSE = response
+
+
+def patch_input(monkeypatch, response=None):
     """"Mock input method"""
     global INPUT_RESPONSE  # pylint: disable=global-statement
     monkeypatch.setattr(builtins, 'input', send_input)
-    INPUT_RESPONSE = response
+    if response:
+        INPUT_RESPONSE = response
 
 
 def patch_url(monkeypatch, suffix):
@@ -64,6 +81,20 @@ def test_help(capsys):
     except SystemExit:
         pass
     verify(capsys, 'help')
+
+
+def test_def_interactive_prompts(capsys, monkeypatch):
+    """unit test the interactive_prompts function"""
+    def mock_get_album_info(album_id):
+        return None
+    monkeypatch.setattr(photos, 'get_album_info', mock_get_album_info)
+
+    patch_input(monkeypatch)
+    for resp in [['1', '-1', 'a', '1'], 'q', '0', ['', '']]:
+        set_input(resp)
+        photos.interactive_prompts()
+
+    verify(capsys, 'def_interactive_prompts')
 
 
 def test_no_args(capsys, monkeypatch):

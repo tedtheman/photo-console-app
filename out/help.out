@@ -1,8 +1,9 @@
-usage: pytest [-h] [-d] [-i] [-g GREP] [-n NUMBER] [-p] [-r] [-t TIMEOUT]
+usage: photos [-h] [-d] [-i] [-g GREP] [-n NUMBER] [-p] [-r] [-t TIMEOUT]
               [albums [albums ...]]
 
 Display photo ids and titles for given album id(s).
 Provide album ids via command line and/or interactive prompts.
+Valid album ids are 1-100.
 To exit interactive mode enter 0, 'q' or hit return twice in succession.
 
 positional arguments:

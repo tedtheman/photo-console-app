@@ -72,7 +72,11 @@ def main(given_args):
             continue
         if nbr_albums > 1:
             print(f"### album id {album_id} ###")
-        display_album_info(album_id)
+
+        photos = get_album_info(album_id)
+
+        if photos:
+            display_album_info(photos)
 
     if opts['interactive']:
         interactive_prompts()
@@ -93,20 +97,19 @@ def interactive_prompts():
             print('exiting ...')
             break
         if not album_id.isdigit():
-            print("albumId must be numeric")
+            print("invalid albumId, should be 1-100, see -h/--help")
             prev_album_id = album_id
             continue
 
-        display_album_info(album_id)
+        photos = get_album_info(album_id)
+
+        if photos:
+            display_album_info(photos)
 
 
-def display_album_info(album_id):  # pylint: disable=too-many-branches
-    """Display album information."""
+def get_album_info(album_id):
+    """get album info"""
     opts = RUN_OPTS.opts
-    if opts['rows']:
-        field_names = ["Row"] + FIELD_NAMES
-    else:
-        field_names = FIELD_NAMES
 
     payload = {'albumId': album_id}
     try:
@@ -115,45 +118,68 @@ def display_album_info(album_id):  # pylint: disable=too-many-branches
     except (requests.ConnectionError, requests.ReadTimeout):
         print(f"get for {PHOTOS_URL} errored or timed out after " +
               f"{opts['timeout']} seconds")
-        return
+        return None
 
     print_debug(f"http status_code = {resp.status_code}; url = {resp.url}")
 
     if not resp.ok:
         print(f'url for album_id={album_id} or "{resp.url}" not found: ' +
               f'status {resp.status_code}')
-        return
+        return None
 
     photos = resp.json()
     if not resp.ok or len(photos) <= 0:
         print(f'zero rows returned for album_id={album_id}')
-        return
+        return None
+
+    return photos
+
+
+def display_album_info(photos):  # pylint: disable=too-many-branches
+    """Display album information."""
+    opts = RUN_OPTS.opts
+
+    if opts['rows']:
+        field_names = ["Row"] + FIELD_NAMES
+    else:
+        field_names = FIELD_NAMES
 
     if opts['pretty']:
         ptable = PrettyTable(field_names=field_names)
         ptable.align['Title'] = 'l'  # left justify titles
+    else:
+        ptable = None
 
     for row, album in enumerate(photos, 1):
+
         if RUN_OPTS.title_pattern:
             result = RUN_OPTS.title_pattern.search(album['title'])
             if not result:
                 continue
-        if opts['pretty']:
-            if opts['rows']:
-                ptable.add_row([row, album['id'], album['title']])
-            else:
-                ptable.add_row([album['id'], album['title']])
-        else:
-            if opts['rows'] and row != int(album['id']):
-                print(f"[{album['id']}:{row}] {album['title']}")
-            else:
-                print(f"[{album['id']}] {album['title']}")
+
+        display_album_row(ptable, row, album['id'], album['title'])
 
         if opts['number'] and opts['number'] <= row:
             break
 
     if opts['pretty']:
         print(ptable)
+
+
+def display_album_row(ptable, row, id, title):
+    """display album row"""
+    opts = RUN_OPTS.opts
+
+    if opts['pretty'] and ptable:
+        if opts['rows']:
+            ptable.add_row([row, id, title])
+        else:
+            ptable.add_row([id, title])
+    else:
+        if opts['rows'] and row != int(id):
+            print(f"[{id}:{row}] {title}")
+        else:
+            print(f"[{id}] {title}")
 
 
 def print_debug(debug_str):
@@ -166,9 +192,11 @@ def parse_args(args):
     """Argment parsing handler."""
     # note: use RawDescriptionHelpFormatter to allow newlines
     parser = argparse.ArgumentParser(
+        prog='photos',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description="""Display photo ids and titles for given album id(s).
 Provide album ids via command line and/or interactive prompts.
+Valid album ids are 1-100.
 To exit interactive mode enter 0, 'q' or hit return twice in succession.
 """,
         epilog="""Examples:
