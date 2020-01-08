@@ -135,7 +135,7 @@ def get_album_info(album_id):
     return photos
 
 
-def display_album_info(photos):  # pylint: disable=too-many-branches
+def display_album_info(photos):
     """Display album information."""
     opts = RUN_OPTS.opts
 
@@ -166,20 +166,20 @@ def display_album_info(photos):  # pylint: disable=too-many-branches
         print(ptable)
 
 
-def display_album_row(ptable, row, id, title):
+def display_album_row(ptable, row, album_id, title):
     """display album row"""
     opts = RUN_OPTS.opts
 
     if opts['pretty'] and ptable:
         if opts['rows']:
-            ptable.add_row([row, id, title])
+            ptable.add_row([row, album_id, title])
         else:
-            ptable.add_row([id, title])
+            ptable.add_row([album_id, title])
     else:
-        if opts['rows'] and row != int(id):
-            print(f"[{id}:{row}] {title}")
+        if opts['rows'] and row != int(album_id):
+            print(f"[{album_id}:{row}] {title}")
         else:
-            print(f"[{id}] {title}")
+            print(f"[{album_id}] {title}")
 
 
 def print_debug(debug_str):
