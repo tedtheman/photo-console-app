@@ -5,10 +5,66 @@ pytest cases for photos.py
 """
 
 import builtins
+import json
 import re
 import photos
+from string import Template
 
 INPUT_RESPONSE = []  # for monkeypatching with send_input() and patch_input()
+
+TEST_JSON_TEMPLATE = '''
+[
+  {
+    "albumId": $album_id,
+    "id": $photo_id_1,
+    "title": "incidunt alias vel enim",
+    "url": "https://via.placeholder.com/600/e743b",
+    "thumbnailUrl": "https://via.placeholder.com/150/e743b"
+  },
+  {
+    "albumId": $album_id,
+    "id": $photo_id_2,
+    "title": "eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt",
+    "url": "https://via.placeholder.com/600/a393af",
+    "thumbnailUrl": "https://via.placeholder.com/150/a393af"
+  },
+  {
+    "albumId": $album_id,
+    "id": $photo_id_3,
+    "title": "eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt",
+    "url": "https://via.placeholder.com/600/a393af",
+    "thumbnailUrl": "https://via.placeholder.com/150/a393af"
+  },
+  {
+    "albumId": $album_id,
+    "id": $photo_id_4,
+    "title": "et natus vero quia totam aut et minima",
+    "url": "https://via.placeholder.com/600/313b40",
+    "thumbnailUrl": "https://via.placeholder.com/150/313b40"
+  },
+  {
+    "albumId": $album_id,
+    "id": $photo_id_5,
+    "title": "veritatis numquam eius",
+    "url": "https://via.placeholder.com/600/eaf2e1",
+    "thumbnailUrl": "https://via.placeholder.com/150/eaf2e1"
+  }
+]
+'''
+
+
+def make_json(album_id, start_id=1, template=TEST_JSON_TEMPLATE):
+    d = {'album_id': album_id}
+    for n, photo_id in enumerate(range(start_id, start_id + 5), 1):
+        d[f'photo_id_{n}'] = str(photo_id)
+    print(f'template dict: {d}')
+    return Template(template).substitute(d)
+
+
+def get_photos_mock(album_id):
+    start_id = int(album_id) * 100  # derive mock start_id based on album_id
+    resp = make_json(album_id, start_id)
+    return json.loads(resp)
 
 
 def arg_list(arg_str):
@@ -85,12 +141,13 @@ def test_help(capsys):
 
 def test_def_interactive_prompts(capsys, monkeypatch):
     """unit test the interactive_prompts function"""
-    def mock_get_album_info(album_id):
+    def noop_get_photos_mock(album_id):
         return None
-    monkeypatch.setattr(photos, 'get_album_info', mock_get_album_info)
+
+    monkeypatch.setattr(photos, 'get_photos', noop_get_photos_mock)
 
     patch_input(monkeypatch)
-    for resp in [['1', '-1', 'a', '1'], 'q', '0', ['', '']]:
+    for resp in [['1', '-1', 'a', '2'], 'q', '0', ['', '']]:
         set_input(resp)
         photos.interactive_prompts()
 
@@ -106,7 +163,10 @@ def test_no_args(capsys, monkeypatch):
 
 def test_interactive(capsys, monkeypatch):
     """Verify series of interactive album ids"""
-    patch_input(monkeypatch, response=['2', '3', '0'])
+
+    monkeypatch.setattr(photos, 'get_photos', get_photos_mock)
+
+    patch_input(monkeypatch, response=['2', '4', '0'])
     photos.main([])
     verify(capsys, 'interactive_test')
 
@@ -124,44 +184,53 @@ def test_0(capsys):
     verify(capsys, 'album_0')
 
 
-def test_1(capsys):
+def test_1(capsys, monkeypatch):
     """Verify Album 1"""
+    monkeypatch.setattr(photos, 'get_photos', get_photos_mock)
+
     photos.main(arg_list('1'))
     verify(capsys, 'album_1')
 
 
-def test_2_max5(capsys):
+def test_2_max5(capsys, monkeypatch):
     """Verify first 5 rows of Album 2 in prettyTable format"""
+    monkeypatch.setattr(photos, 'get_photos', get_photos_mock)
+
     photos.main(arg_list('2 -n 5 --pretty'))
     verify(capsys, 'album_2_max5_pretty')
 
 
-def test_3_max5(capsys):
-    """Verify first 5 rows of Album 3 with relative row numbers ouput"""
+def test_3_max5(capsys, monkeypatch):
+    """Verify first 5 rows of Album 3 with relative row numbers output"""
+    monkeypatch.setattr(photos, 'get_photos', get_photos_mock)
     photos.main(arg_list('3 -n 5 --rows'))
     verify(capsys, 'album_3_max5_rows')
 
 
-def test_3_grep_qui(capsys):
+def test_3_grep_qui(capsys, monkeypatch):
     """Verify row filtering with expected matches"""
-    photos.main(arg_list('3 --grep qui --rows --pretty'))
+    monkeypatch.setattr(photos, 'get_photos', get_photos_mock)
+    photos.main(arg_list('3 --grep iste --rows --pretty'))
     verify(capsys, 'album_3_grep_qui')
 
 
-def test_3_grep_nomatch(capsys):
+def test_3_grep_nomatch(capsys, monkeypatch):
     """Verify row filtering with no matches"""
+    monkeypatch.setattr(photos, 'get_photos', get_photos_mock)
     photos.main(arg_list('3 --grep NOMATCH --rows --pretty'))
     verify(capsys, 'album_3_grep_nomatch')
 
 
-def test_3_bad_grep(capsys):
+def test_3_bad_grep(capsys, monkeypatch):
     """Verify handling of invalid grep pattern"""
+    monkeypatch.setattr(photos, 'get_photos', get_photos_mock)
     photos.main(arg_list('3 --grep "][" --rows --pretty'))
     verify(capsys, 'album_3_bad_grep')
 
 
-def test_35_100_max20(capsys):
+def test_35_100_max20(capsys, monkeypatch):
     """Verify multiple Album ids with max row number for each"""
+    monkeypatch.setattr(photos, 'get_photos', get_photos_mock)
     photos.main(arg_list('35 100 -n 20'))
     verify(capsys, 'album_35+100_max20')
 

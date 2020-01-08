@@ -1,19 +1,7 @@
-+-----+---------+--------------------------------------------------------------+
-| Row | PhotoId | Title                                                        |
-+-----+---------+--------------------------------------------------------------+
-|  4  |   104   | et natus vero quia totam aut et minima                       |
-|  8  |   108   | qui tempora vel exercitationem harum iusto voluptas incidunt |
-|  9  |   109   | quidem ut quos non qui debitis exercitationem                |
-|  12 |   112   | laudantium quibusdam inventore                               |
-|  19 |   119   | quisquam error consequatur                                   |
-|  20 |   120   | eos quia minima modi cumque illo odit consequatur vero       |
-|  23 |   123   | fuga sint ipsa quis                                          |
-|  25 |   125   | et fuga perspiciatis qui quis                                |
-|  27 |   127   | magnam quia sed aspernatur                                   |
-|  28 |   128   | est facere ut nam repellat numquam quia quia eos             |
-|  31 |   131   | qui sed ex                                                   |
-|  34 |   134   | eveniet perspiciatis optio est qui ea dolore                 |
-|  35 |   135   | qui harum quis ipsum optio ex                                |
-|  37 |   137   | et sit earum praesentium quas quis sint et                   |
-|  45 |   145   | eius unde ipsa incidunt corrupti quia accusamus omnis        |
-+-----+---------+--------------------------------------------------------------+
+template dict: {'album_id': '3', 'photo_id_1': '300', 'photo_id_2': '301', 'photo_id_3': '302', 'photo_id_4': '303', 'photo_id_5': '304'}
++-----+---------+------------------------------------------------------------------------+
+| Row | PhotoId | Title                                                                  |
++-----+---------+------------------------------------------------------------------------+
+|  2  |   301   | eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt |
+|  3  |   302   | eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt |
++-----+---------+------------------------------------------------------------------------+

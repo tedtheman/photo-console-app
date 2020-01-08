@@ -1,9 +1,10 @@
-+---------+-------------------------------------------------------+
-| PhotoId | Title                                                 |
-+---------+-------------------------------------------------------+
-|    51   | non sunt voluptatem placeat consequuntur rem incidunt |
-|    52   | eveniet pariatur quia nobis reiciendis laboriosam ea  |
-|    53   | soluta et harum aliquid officiis ab omnis consequatur |
-|    54   | ut ex quibusdam dolore mollitia                       |
-|    55   | voluptatem consequatur totam qui aut iure est vel     |
-+---------+-------------------------------------------------------+
+template dict: {'album_id': '2', 'photo_id_1': '200', 'photo_id_2': '201', 'photo_id_3': '202', 'photo_id_4': '203', 'photo_id_5': '204'}
++---------+------------------------------------------------------------------------+
+| PhotoId | Title                                                                  |
++---------+------------------------------------------------------------------------+
+|   200   | incidunt alias vel enim                                                |
+|   201   | eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt |
+|   202   | eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt |
+|   203   | et natus vero quia totam aut et minima                                 |
+|   204   | veritatis numquam eius                                                 |
++---------+------------------------------------------------------------------------+

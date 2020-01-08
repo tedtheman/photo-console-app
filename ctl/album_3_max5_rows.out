@@ -1,5 +1,6 @@
-[101:1] incidunt alias vel enim
-[102:2] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt
-[103:3] et eius nisi in ut reprehenderit labore eum
-[104:4] et natus vero quia totam aut et minima
-[105:5] veritatis numquam eius
+template dict: {'album_id': '3', 'photo_id_1': '300', 'photo_id_2': '301', 'photo_id_3': '302', 'photo_id_4': '303', 'photo_id_5': '304'}
+[300:1] incidunt alias vel enim
+[301:2] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt
+[302:3] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt
+[303:4] et natus vero quia totam aut et minima
+[304:5] veritatis numquam eius

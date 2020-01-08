@@ -1,2 +1,4 @@
 ### album id 35 ###
+template dict: {'album_id': '35', 'photo_id_1': '3500', 'photo_id_2': '3501', 'photo_id_3': '3502', 'photo_id_4': '3503', 'photo_id_5': '3504'}
 ### album id 100 ###
+template dict: {'album_id': '100', 'photo_id_1': '10000', 'photo_id_2': '10001', 'photo_id_3': '10002', 'photo_id_4': '10003', 'photo_id_5': '10004'}

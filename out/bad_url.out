@@ -1,1 +1,1 @@
-url for album_id=1 or "https://jsonplaceholder.typicode.com/photosx?albumId=1" not found: status 404
+get for https://jsonplaceholder.typicode.com/photosx errored or timed out after 5 seconds

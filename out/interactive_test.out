@@ -1,103 +1,15 @@
 Enter album_id: 
-[51] non sunt voluptatem placeat consequuntur rem incidunt
-[52] eveniet pariatur quia nobis reiciendis laboriosam ea
-[53] soluta et harum aliquid officiis ab omnis consequatur
-[54] ut ex quibusdam dolore mollitia
-[55] voluptatem consequatur totam qui aut iure est vel
-[56] vel voluptatem esse consequuntur est officia quo aut quisquam
-[57] vero est optio expedita quis ut molestiae
-[58] rem pariatur facere eaque
-[59] modi totam dolor eaque et ipsum est cupiditate
-[60] ea enim temporibus asperiores placeat consectetur commodi ullam
-[61] quia minus sed eveniet accusantium incidunt beatae odio
-[62] dolorem cumque quo nihil inventore enim
-[63] facere animi autem quod dolor
-[64] doloremque culpa quia
-[65] sed voluptatum enim eaque cumque qui sunt
-[66] provident rerum voluptatem illo asperiores qui maiores
-[67] veritatis labore ipsum unde aut quam dolores
-[68] architecto aut quod qui ullam vitae expedita delectus
-[69] et autem dolores aut porro est qui
-[70] quam quos dolor eum ea in
-[71] illo qui vel laboriosam vel fugit deserunt
-[72] iusto sint enim nesciunt facilis exercitationem
-[73] rerum exercitationem libero dolor
-[74] eligendi quas consequatur aut consequuntur
-[75] aut magni quibusdam cupiditate ea
-[76] magni nulla et dolores
-[77] ipsum consequatur vel omnis mollitia repellat dolores quasi
-[78] aperiam aut est amet tenetur et dolorem
-[79] est vel et laboriosam quo aspernatur distinctio molestiae
-[80] et corrupti nihil cumque
-[81] error magni fugiat dolorem impedit molestiae illo ullam debitis
-[82] voluptate voluptas molestias vitae illo iusto
-[83] quia quasi enim voluptatem repellat sit sint
-[84] aliquam dolorem ut modi ratione et assumenda impedit
-[85] ullam delectus architecto sint error
-[86] qui vel ut odio consequuntur
-[87] eos nihil sunt accusantium omnis
-[88] inventore veritatis magnam enim quasi
-[89] id at cum incidunt nulla dolor vero tenetur
-[90] et quae eligendi vitae maxime in
-[91] sunt quo laborum commodi porro consequatur nam delectus et
-[92] quod non quae
-[93] molestias et aliquam natus repellendus accusamus dolore
-[94] et quisquam aspernatur
-[95] magni odio non
-[96] dolore esse a in eos sed
-[97] labore magnam officiis nemo et
-[98] sed commodi libero id nesciunt modi vitae
-[99] magnam dolor sed enim vel optio consequuntur
-[100] et qui rerum
+template dict: {'album_id': '2', 'photo_id_1': '200', 'photo_id_2': '201', 'photo_id_3': '202', 'photo_id_4': '203', 'photo_id_5': '204'}
+[200] incidunt alias vel enim
+[201] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt
+[202] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt
+[203] et natus vero quia totam aut et minima
+[204] veritatis numquam eius
 Enter album_id: 
-[101] incidunt alias vel enim
-[102] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt
-[103] et eius nisi in ut reprehenderit labore eum
-[104] et natus vero quia totam aut et minima
-[105] veritatis numquam eius
-[106] repellat molestiae nihil iste autem blanditiis officiis
-[107] maiores ipsa ut autem
-[108] qui tempora vel exercitationem harum iusto voluptas incidunt
-[109] quidem ut quos non qui debitis exercitationem
-[110] reiciendis et velit laborum recusandae
-[111] quos rem nulla ea amet
-[112] laudantium quibusdam inventore
-[113] hic nulla consectetur
-[114] consequatur quaerat sunt et
-[115] unde minus molestias
-[116] et iure eius enim explicabo
-[117] dolore quo nemo omnis odio et iure explicabo
-[118] et doloremque excepturi libero earum
-[119] quisquam error consequatur
-[120] eos quia minima modi cumque illo odit consequatur vero
-[121] commodi sed enim sint in nobis
-[122] consequatur quos odio harum alias
-[123] fuga sint ipsa quis
-[124] officiis similique autem unde repellendus
-[125] et fuga perspiciatis qui quis
-[126] id reiciendis neque voluptas explicabo quae
-[127] magnam quia sed aspernatur
-[128] est facere ut nam repellat numquam quia quia eos
-[129] alias mollitia voluptatum soluta quod
-[130] maxime provident eaque sapiente ipsa ducimus
-[131] qui sed ex
-[132] repellendus velit id non veniam dolorum quod est
-[133] placeat in reprehenderit
-[134] eveniet perspiciatis optio est qui ea dolore
-[135] qui harum quis ipsum optio ex
-[136] aut voluptas aut temporibus
-[137] et sit earum praesentium quas quis sint et
-[138] vitae delectus sed
-[139] velit placeat optio corrupti
-[140] assumenda sit non debitis dolorem saepe quae deleniti
-[141] commodi eum dolorum reiciendis unde ut
-[142] reprehenderit totam dolor itaque
-[143] totam temporibus eaque est eum et perspiciatis ullam
-[144] aspernatur possimus consectetur in tempore distinctio a ipsa officiis
-[145] eius unde ipsa incidunt corrupti quia accusamus omnis
-[146] ullam dolor ut ipsa veniam
-[147] minima aspernatur eius nemo ut
-[148] aperiam amet est occaecati quae non ut
-[149] saepe recusandae ut odio enim ipsa quo placeat iusto
-[150] ipsum numquam ratione facilis provident animi reprehenderit ut
+template dict: {'album_id': '4', 'photo_id_1': '400', 'photo_id_2': '401', 'photo_id_3': '402', 'photo_id_4': '403', 'photo_id_5': '404'}
+[400] incidunt alias vel enim
+[401] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt
+[402] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt
+[403] et natus vero quia totam aut et minima
+[404] veritatis numquam eius
 Enter album_id: exiting ...

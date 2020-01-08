@@ -73,10 +73,9 @@ def main(given_args):
         if nbr_albums > 1:
             print(f"### album id {album_id} ###")
 
-        photos = get_album_info(album_id)
+        photos = get_photos(album_id)
 
-        if photos:
-            display_album_info(photos)
+        display_photos(photos)
 
     if opts['interactive']:
         interactive_prompts()
@@ -101,14 +100,13 @@ def interactive_prompts():
             prev_album_id = album_id
             continue
 
-        photos = get_album_info(album_id)
+        photos = get_photos(album_id)
 
-        if photos:
-            display_album_info(photos)
+        display_photos(photos)
 
 
-def get_album_info(album_id):
-    """get album info"""
+def get_photos(album_id):
+    """get photos, or album info"""
     opts = RUN_OPTS.opts
 
     payload = {'albumId': album_id}
@@ -135,9 +133,12 @@ def get_album_info(album_id):
     return photos
 
 
-def display_album_info(photos):
-    """Display album information."""
+def display_photos(photos):
+    """Display photos, or album information."""
     opts = RUN_OPTS.opts
+
+    if not photos:
+        return
 
     if opts['rows']:
         field_names = ["Row"] + FIELD_NAMES
@@ -145,10 +146,10 @@ def display_album_info(photos):
         field_names = FIELD_NAMES
 
     if opts['pretty']:
-        ptable = PrettyTable(field_names=field_names)
-        ptable.align['Title'] = 'l'  # left justify titles
+        p_table = PrettyTable(field_names=field_names)
+        p_table.align['Title'] = 'l'  # left justify titles
     else:
-        ptable = None
+        p_table = None
 
     for row, album in enumerate(photos, 1):
 
@@ -157,24 +158,24 @@ def display_album_info(photos):
             if not result:
                 continue
 
-        display_album_row(ptable, row, album['id'], album['title'])
+        display_one_photo(p_table, row, album['id'], album['title'])
 
         if opts['number'] and opts['number'] <= row:
             break
 
     if opts['pretty']:
-        print(ptable)
+        print(p_table)
 
 
-def display_album_row(ptable, row, album_id, title):
-    """display album row"""
+def display_one_photo(p_table, row, album_id, title):
+    """display one photo, or album row"""
     opts = RUN_OPTS.opts
 
-    if opts['pretty'] and ptable:
+    if opts['pretty'] and p_table:
         if opts['rows']:
-            ptable.add_row([row, album_id, title])
+            p_table.add_row([row, album_id, title])
         else:
-            ptable.add_row([album_id, title])
+            p_table.add_row([album_id, title])
     else:
         if opts['rows'] and row != int(album_id):
             print(f"[{album_id}:{row}] {title}")
