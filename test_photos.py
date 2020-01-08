@@ -54,6 +54,7 @@ TEST_JSON_TEMPLATE = '''
 
 
 def make_json(album_id, start_id=1, template=TEST_JSON_TEMPLATE):
+    """derive json based on given album_id and starting photo id"""
     d = {'album_id': album_id}
     for n, photo_id in enumerate(range(start_id, start_id + 5), 1):
         d[f'photo_id_{n}'] = str(photo_id)
@@ -61,7 +62,8 @@ def make_json(album_id, start_id=1, template=TEST_JSON_TEMPLATE):
 
 
 def get_photos_mock(album_id):
-    start_id = int(album_id) * 100  # derive mock start_id based on album_id
+    """mock for getting photos using make_json"""
+    start_id = int(album_id) * 10  # derive mock start_id based on album_id
     resp = make_json(album_id, start_id)
     return json.loads(resp)
 
