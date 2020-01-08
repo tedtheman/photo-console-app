@@ -1,12 +1,10 @@
 Enter album_id: 
-template dict: {'album_id': '2', 'photo_id_1': '200', 'photo_id_2': '201', 'photo_id_3': '202', 'photo_id_4': '203', 'photo_id_5': '204'}
 [200] incidunt alias vel enim
 [201] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt
 [202] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt
 [203] et natus vero quia totam aut et minima
 [204] veritatis numquam eius
 Enter album_id: 
-template dict: {'album_id': '4', 'photo_id_1': '400', 'photo_id_2': '401', 'photo_id_3': '402', 'photo_id_4': '403', 'photo_id_5': '404'}
 [400] incidunt alias vel enim
 [401] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt
 [402] eaque iste corporis tempora vero distinctio consequuntur nisi nesciunt

@@ -57,7 +57,6 @@ def make_json(album_id, start_id=1, template=TEST_JSON_TEMPLATE):
     d = {'album_id': album_id}
     for n, photo_id in enumerate(range(start_id, start_id + 5), 1):
         d[f'photo_id_{n}'] = str(photo_id)
-    print(f'template dict: {d}')
     return Template(template).substitute(d)
 
 

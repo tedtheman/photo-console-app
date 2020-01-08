@@ -1,5 +1,4 @@
 Enter album_id: 
-get for https://jsonplaceholder.typicode.com/photos errored or timed out after 5 seconds
 Enter album_id: 
 invalid albumId, should be 1-100, see -h/--help
 Enter album_id: exiting ...
